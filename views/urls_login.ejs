@@ -10,15 +10,15 @@
       <h3>Login to Web App</h3>
         <form method="post" action="/login">
           <% if(!user) { %>
-          <p><input type="email" name="email" value="" placeholder="Email"></p>
-          <p><input type="password" name="password" value="" placeholder="Password"></p>
+          <p><input type="email" name="email" style="width: 300px" value="" placeholder="Email"></p>
+          <p><input type="password" name="password" style="width: 300px" value="" placeholder="Password"></p>
           <p class="submit"><input type="submit" value="Login"></p>
           <% } %>
         </form>
         <% if(user) { %>
         <form method="post" action="/logout">
           <p> Welcome, <%= user["email"] %></p>
-          <p class="submit"><input type="submit" value="Logout"></p>
+          <p class="submit"><input type="submit"  value="Logout"></p>
         <% } %>
         </form>
     </div>

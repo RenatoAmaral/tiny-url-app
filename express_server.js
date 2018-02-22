@@ -109,24 +109,23 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res) => {
 
-  const userEmail= req.body.email
-  const password = req.body.password
+  const userEmail= req.body.email;
+  const password = req.body.password;
 
   for(let uid in users ){
     if( users[uid]["email"] === userEmail ){
       if( users[uid]["password"] === password){
         res.cookie("user_id", users[uid]).redirect("/");
-      }else {
-        res.send("Wrong Password").status(403);
-      }
-    }else {
-      res.send("Wrong Email").status(403);
+      } else {
+          res.send("Wrong Password").status(403);
+        }
     }
   }
+  res.send("Wrong Email").status(403);
 });
 
 app.post("/logout", (req, res) => {
-  res.clearCookie("username").redirect("/urls");
+  res.clearCookie("user_id").redirect("/login");
 });
 
 app.get("/register", (req, res) => {
