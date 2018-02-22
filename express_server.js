@@ -52,7 +52,7 @@ app.listen(PORT, () => {
 
 app.get("/urls/new", (req, res) => {
   let templateVars = {
-    username: req.cookies["username"]
+    user : users[req.cookies["user_id"]]
   }
   res.render("urls_new", templateVars);
 });
@@ -60,7 +60,7 @@ app.get("/urls/new", (req, res) => {
 app.get("/urls", (req, res) => {
   let templateVars = {
     urls : urlDatabase,
-    username: req.cookies["username"]
+    user : users[req.cookies["user_id"]]
    };
   res.render("urls_index", templateVars);
 });
@@ -68,7 +68,7 @@ app.get("/urls", (req, res) => {
 app.get("/urls/:id", (req, res) => {
   let templateVars = {
     shortURL: req.params.id,
-    username: req.cookies["username"],
+    user : users[req.cookies["user_id"]],
     longURL: urlDatabase[req.params.id]
   };
   res.render("urls_show", templateVars);
@@ -109,17 +109,20 @@ app.post("/logout", (req, res) => {
 app.get("/register", (req, res) => {
   res.render("urls_index");
 });
+
 app.post("/register", (req, res) => {
   if(!req.body.email && !req.body.password){
     res.status(400);
-  }else{
+  }else {
     let newEmailId = generateRandomString();
-
     users[newEmailId] = {
+
       "id" : newEmailId,
       "email" : req.body.email,
       "password" : req.body.password
+
     };
-   }
-  res.cookie("user_id", newEmailId).redirect("/urls");
+    res.cookie("user_id", newEmailId).redirect("/urls");
+    console.log(users[req.cookies["user_id"]])
+  }
 });
