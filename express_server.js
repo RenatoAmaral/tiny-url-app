@@ -38,6 +38,7 @@ function generateRandomString() {
 };
 
 
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser())
@@ -107,8 +108,21 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  let username = req.body.username
-  res.cookie("username", username).redirect("/urls");
+
+  const userEmail= req.body.email
+  const password = req.body.password
+
+  for(let uid in users ){
+    if( users[uid]["email"] === userEmail ){
+      if( users[uid]["password"] === password){
+        res.cookie("user_id", users[uid]).redirect("/");
+      }else {
+        res.send("Wrong Password").status(403);
+      }
+    }else {
+      res.send("Wrong Email").status(403);
+    }
+  }
 });
 
 app.post("/logout", (req, res) => {
@@ -132,6 +146,5 @@ app.post("/register", (req, res) => {
 
     };
     res.cookie("user_id", newEmailId).redirect("/urls");
-    console.log(users[req.cookies["user_id"]])
   }
 });
