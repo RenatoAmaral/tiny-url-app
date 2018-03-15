@@ -1,1 +1,28 @@
-<h1><a href="/urls/">TinyApp</a></hi>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TinyApp</title>
+</head>
+<body>
+  <section class="container">
+    <div class="login">
+      <h1><a href="/urls/">TinyApp</a></hi>
+      <h3>Login to Web App</h3>
+      <form method="post" action="/login">
+        <% if(!username) { %>
+        <p><input type="text" name="username" value="" placeholder="Username"></p>
+        <!-- <p><input type="password" name="password" value="" placeholder="Password"></p> -->
+        <p class="submit"><input type="submit" value="Login"></p>
+        <% } %>
+      </form>
+      <% if(username) { %>
+      <form method="post" action="/logout">
+        <p> Welcome, <%= username %></p>
+        <p class="submit"><input type="submit" value="Logout"></p>
+      <% } %>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

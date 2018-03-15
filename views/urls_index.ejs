@@ -5,28 +5,38 @@
 </head>
 <body>
   <header><% include ./partials/_header.ejs %></header>
+  </form>
+      <!-- <% if(username) { %> -->
+      <form method="post" action="/register">
+        <p><input type="email" name="email" value="" placeholder="Enter your email here. "></p>
+        <p><input type="password" name="password" value="" placeholder="Enter your password here."></p>
+        <!-- <p> Welcome, <%= username %></p> -->
+        <p class="submit"><input type="submit" value="Register"></p>
+      <!-- <% } %> -->
+  </form>
   <table>
     <thread>
       <tr>
         <th>Shortened</th>
         <th>Full URL</th>
+        <th><a href="/urls/new"> New URL</a></th>
       </tr>
     </thread>
     <tbody>
       <% for(let short in urls) { %>
-       <form method="POST" action="/urls/9sm5xK/delete">
-        <tr>
-          <td><a href="/urls/<%= short %>"><%= short %> <a/> </td>
-          <td><a href="/urls/<%= short %>">edit<a/> </td>
-          <td><%= urls[short] %> <button type="submit"> Delete </button></td>
-
-        </tr>
+        <form method="POST" action="/urls/<%= short %>/delete">
+          <tr>
+            <td><a href="/urls/<%= short %>"><%= short %> <a/> </td>
+            <td><a href="/urls/<%= short %>">edit<a/> </td>
+            <td><%= urls[short] %> <button type="submit"> Delete </button></td>
+          </tr>
         </form>
       <% } %>
     </tbody>
   </table>
 </body>
 </html>
+
 
 
 

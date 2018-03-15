@@ -1,8 +1,12 @@
 # Untracked files:
 app.js
-express_server.js
+server.js
+views/partials/footer.ejs
+views/partials/header.ejs
+views/partials/head.ejs
 node_modules/
 package-lock.json
+views/pages/
 
 # Logs
 logs
