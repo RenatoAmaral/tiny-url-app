@@ -16,7 +16,7 @@ This project is coursework from [Lighthouse Labs](https://github.com/lighthouse-
 
 - Install all dependencies (using the `npm install` command).
 - Run the development web server using the `node express_server.js` command.
-- Default port, or port 8080 if none is set.
+- Default port 8080 if none is set.
 
 ## Contact Author
 
