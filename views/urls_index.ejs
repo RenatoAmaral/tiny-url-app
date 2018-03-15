@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>TinyApp</title>
-</head>
-<body>
-  <header><% include ./partials/_header.ejs %></header>
-  </form>
-      <!-- <% if(username) { %> -->
-      <form method="post" action="/register">
-        <p><input type="email" name="email" value="" placeholder="Enter your email here. "></p>
-        <p><input type="password" name="password" value="" placeholder="Enter your password here."></p>
-        <!-- <p> Welcome, <%= username %></p> -->
-        <p class="submit"><input type="submit" value="Register"></p>
-      <!-- <% } %> -->
-  </form>
-  <table>
-    <thread>
-      <tr>
-        <th>Shortened</th>
-        <th>Full URL</th>
-        <th><a href="/urls/new"> New URL</a></th>
-      </tr>
-    </thread>
-    <tbody>
-      <% for(let short in urls) { %>
-        <form method="POST" action="/urls/<%= short %>/delete">
-          <tr>
-            <td><a href="/urls/<%= short %>"><%= short %> <a/> </td>
-            <td><a href="/urls/<%= short %>">edit<a/> </td>
-            <td><%= urls[short] %> <button type="submit"> Delete </button></td>
-          </tr>
-        </form>
+
+  <head>
+
+    <title>TinyApp</title>
+
+  </head>
+  <body>
+
+    <header>
+
+      <% include ./partials/_header.ejs %>
+
+    </header>
+
+    <main>
+
+      <% if (user) { %>
+
+      <h2>Your URLs</h2>
+
+      <table cellspacing='10'>
+
+        <thead>
+
+          <th colspan='2'>Original URL</th>
+
+          <th>Shortened URL</th>
+
+        </thead>
+
+        <tbody>
+
+          <% for(let i in urls) { %>
+
+            <tr>
+
+              <td>
+
+                <a href="<%=urls[i]%>"><%=urls[i]%></a>
+
+              </td>
+
+              <td>
+
+                <form method='GET' action='/urls/<%=shortURLs[i]%>/'>
+
+                  <button type="submit">Edit</button>
+
+                </form>
+
+              </td>
+
+              <td>
+
+                <a href="/u/<%=shortURLs[i]%>"><%=shortURLs[i]%></a>
+
+              </td>
+
+              <td>
+
+                <form method="POST" action='/urls/<%=shortURLs[i]%>/delete'>
+
+                  <button type="submit">Delete</button>
+
+                </form>
+
+              </td>
+
+            </tr>
+
+          <% } %>
+
+        </tbody>
+
+      </table>
+
       <% } %>
-    </tbody>
-  </table>
-</body>
+
+      <p id='addURL'><a href="/urls/new">Shorten a new URL</a></p>
+
+    </main>
+
+  </body>
+
 </html>
 
 

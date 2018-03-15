@@ -4,25 +4,41 @@
   <meta charset="utf-8">
   <title>TinyApp</title>
 </head>
-<body>
-  <section class="container">
-    <div class="login">
-      <h1><a href="/urls/">TinyApp</a></hi>
-      <h3>Login to Web App</h3>
-      <form method="post" action="/login">
-        <% if(!username) { %>
-        <p><input type="text" name="username" value="" placeholder="Username"></p>
-        <!-- <p><input type="password" name="password" value="" placeholder="Password"></p> -->
-        <p class="submit"><input type="submit" value="Login"></p>
+
+  <body>
+
+    <header>
+
+      <div>
+
+        <% if (user) { %>
+            Logged in as <strong><%=user.email%></strong>
+
+          <form method='POST' action='/logout'>
+
+            <button type="submit">Logout</button>
+
+          </form>
+
+        <% } else { %>
+
+          <a href="/login">Login</a>
+
+          <a href="/register">Create a new account</a>
+
         <% } %>
-      </form>
-      <% if(username) { %>
-      <form method="post" action="/logout">
-        <p> Welcome, <%= username %></p>
-        <p class="submit"><input type="submit" value="Logout"></p>
-      <% } %>
-      </form>
-    </div>
-  </section>
-</body>
+
+      </div>
+
+      <div id="name">
+
+        <h1><a href="/urls">TinyApp: <span>URL shortener</span></a></h1>
+
+      </div>
+
+    </header>
+
+  </body>
+
 </html>
+

@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>TinyApp</title>
-</head>
-<body>
-  <header><% include ./partials/_header.ejs %></header>
-  <table>
-    <form method="POST" action="/urls/<%= shortURL %>/update">
-      <thread>
-        <tr>
-          <th> <h1>ShortURL:<%= shortURL %></h1></th>
-        </tr>
-      </thread>
-      <tbody>
-        <tr>
-          <td><input type="text" name="longURL"  style="width:250px"  value="<%= longURL %>"></td>
-          <td><button type="submit"> Update </button></td>
-        </tr>
-      </tbody>
-     </form>
-   </table>
-</body>
 
+  <head>
 
-<!-- </html> -->
+    <title>TinyApp</title>
+
+  </head>
+
+  <body>
+
+    <header>
+
+      <% include ./partials/_header.ejs %>
+
+    </header>
+
+    <h3>Edit URL <span>(<%=shortURLs%>)</span></h3>
+
+    <form method="POST" action='/urls/<%=shortURLs%>'>
+
+      <input type="text" value='<%=longURL%>' name='newURL' style='width: 300px' autofocus>
+
+      <button type="submit">Submit</button>
+
+    </form>
+
+    <a href="/urls">Cancel</a>
+
+  </body>
+
+</html>
 

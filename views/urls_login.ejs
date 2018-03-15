@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>TinyApp</title>
-</head>
-<body>
-  <header><% include ./partials/_header.ejs %></header>
-  <div class="">
-    <h1><a href="/urls/">TinyApp</a></hi>
-      <h3>Login to Web App</h3>
-        <form method="post" action="/login">
-          <% if(!user) { %>
-          <p><input type="email" name="email" style="width: 300px" value="" placeholder="Email"></p>
-          <p><input type="password" name="password" style="width: 300px" value="" placeholder="Password"></p>
-          <p class="submit"><input type="submit" value="Login"></p>
-          <% } %>
-        </form>
-        <% if(user) { %>
-        <form method="post" action="/logout">
-          <p> Welcome, <%= user["email"] %></p>
-          <p class="submit"><input type="submit"  value="Logout"></p>
-        <% } %>
-        </form>
-    </div>
-</body>
+
+  <head>
+
+    <title>TinyApp</title>
+
+  </head>
+
+  <body>
+
+    <% include partials/_header %>
+
+    <main>
+
+      <h2>Log in</h2>
+
+      <form method='POST' action="/login">
+
+        <input type="email" name="email" placeholder='email@example.com' autofocus>
+
+        <input type="password" name="password" placeholder='************'>
+
+        <button type="submit">Log in</button>
+
+      </form>
+
+    </main>
+
+  </body>
+
 </html>
 
 

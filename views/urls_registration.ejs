@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>TinyApp</title>
-</head>
-<body>
-  <header><% include ./partials/_header.ejs %></header>
-  </form>
-     <h3>SignUp to Web App</h3>
-      <form method="post" action="/register">
-        <p><input type="email" name="email" style="width: 300px" value="" placeholder="Enter your email here. "></p>
-        <p><input type="password" name="password" value="" style="width: 300px" placeholder="Enter your password here."></p>
-        <p class="submit"><input type="submit" value="Register"></p>
-  </form>
-</body>
+  <head>
+
+    <title>TinyApp</title>
+
+  </head>
+
+  <body>
+
+    <% include partials/_header %>
+
+      <main>
+
+        <form method='POST' action='/register'>
+
+          <label for="email">Create new user:</label>
+
+          <input type="email" name='email' placeholder='email@example.com' autofocus>
+
+          <input type="password" name='password' placeholder='********'>
+
+          <button type="submit">Create</button>
+
+        </form>
+
+    </main>
+
+  </body>
+
 </html>
 
 
